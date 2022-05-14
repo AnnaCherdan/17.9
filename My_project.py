@@ -26,15 +26,6 @@ def binary_search(array, element, left, right):
         return binary_search(array, element, middle + 1, right)
 
 
-# def smoll_big_in(b_array, element):
-#     if b_array.index(element) < guest_num:
-#         return f'Индекс предыдущего меньшего числа {b_array.index(element)}.'
-#     elif b_array.index(element) > guest_num:
-#         return f'Индекс  следующего большего числа {b_array.index(element)}.'
-#     else:
-#         ...
-
-
 while True: # Открыт цикл с отслеживанием ошибок
     try:
         array = input('Введите, пожалуйста, через пробел некоторые целые числа от 0 до 100: ').split()
@@ -54,6 +45,8 @@ while True: # Открыт цикл с отслеживанием ошибок
 while True:
     try:
         guest_num = int(input('Введите, пожалуйста, искомое число: '))
+        b_array.append(guest_num)
+        bb_array = babble_sort(b_array)
         if guest_num < 0 or guest_num > 100:
             raise Exception
         break
@@ -65,20 +58,17 @@ while True:
         exit()
 
 print(b_array)
+# print(bb_array)
 
 guest_num_in = binary_search(b_array, guest_num, 0, len(b_array))
-print(guest_num_in.__index__())
-
-for i in b_array:
-
-
-# if guest_num == guest_num_in:
-#     print(f'Ваше число {guest_num} совпадает со следующим числом.')
-# elif smoll_in:
-#     print(f'Индекс предыдущего меньшего числа {b_array.index(smoll_in)}.')
-# elif big_in:
-#     print(f'Индекс  следующего большего числа {b_array.index(big_in)} меньше.')
-# else:
-#     print(f'Ваше не понимаю что тут надо делать!')
-
-
+smoll_in = binary_search(b_array, guest_num_in, 0, guest_num_in - 1)
+print(guest_num_in)
+for i in range(len(b_array)):
+    if i < guest_num_in:
+        print(f'Индекс предыдущего меньшего числа - {guest_num_in - 1}.')
+    if i > guest_num_in:
+        print(f'Индекс  следующего большего числа - {guest_num_in + 1}.')
+    if i == guest_num_in:
+        print(f'Ваше число совпадает со следующим числом.')
+    else:
+        print(f'Ваше не понимаю что тут надо делать!')
