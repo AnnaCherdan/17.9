@@ -1,10 +1,5 @@
-# подается последовательность чисел через пробел, а также запрашивается у пользователя любое число.
-# Преобразование введённой последовательности в список
-# Сортировка списка по возрастанию элементов в нем (для реализации сортировки определите функцию)
-# Устанавливается номер позиции элемента, который меньше введенного пользователем числа,
-# а следующий за ним больше или равен этому числу.
+# Выполнила Черданцева Анна. QAP-
 
-# Выполнила Черданцева Анна. QAP-73.
 def babble_sort(array):
     for i in range(len(array)):
         for j in range(len(array) - i - 1):
@@ -26,10 +21,10 @@ def binary_search(array, element, left, right):
         return binary_search(array, element, middle + 1, right)
 
 
-while True: # Открыт цикл с отслеживанием ошибок
+while True:
     try:
         array = input('Введите, пожалуйста, через пробел некоторые целые числа от 0 до 100: ').split()
-        l_array = list(map(int, array))  # Преобразуем в список гостевой массив.
+        l_array = list(map(int, array))
         b_array = babble_sort(l_array)
         for i in b_array:
             if i < 0 or i > 100:
@@ -57,18 +52,25 @@ while True:
         print('Введите число не меньше 0 и не больше 100.')
         exit()
 
-print(b_array)
-# print(bb_array)
+print(f'Отсортированный числовой массив: {b_array}.')
 
 guest_num_in = binary_search(b_array, guest_num, 0, len(b_array))
-smoll_in = binary_search(b_array, guest_num_in, 0, guest_num_in - 1)
-print(guest_num_in)
-for i in range(len(b_array)):
-    if i < guest_num_in:
-        print(f'Индекс предыдущего меньшего числа - {guest_num_in - 1}.')
-    if i > guest_num_in:
-        print(f'Индекс  следующего большего числа - {guest_num_in + 1}.')
-    if i == guest_num_in:
-        print(f'Ваше число совпадает со следующим числом.')
-    else:
-        print(f'Ваше не понимаю что тут надо делать!')
+smoll_in = guest_num_in - 1
+big_in = guest_num_in + 1
+
+print(f'Индекс вашего числа в массиве: {guest_num_in}.')
+
+if smoll_in in range(len(b_array)):
+    print(f'Индекс предыдущего меньшего числа: {smoll_in}.')
+else:
+    print(f'Индекс предыдущего меньшего числа: {smoll_in}, вне (меньше) диапазона.')
+
+if big_in in range(len(b_array)):
+    print(f'Индекс следующего большего числа: {big_in}.')
+else:
+    print(f'Индекс предыдущего меньшего числа: {big_in}, вне (больше) диапазона.')
+
+if b_array[guest_num_in] == b_array[big_in]:
+    print('Ваше число равно следующему числу.')
+else:
+    ...
