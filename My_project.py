@@ -1,4 +1,4 @@
-# Выполнила Черданцева Анна. QAP-
+# Выполнила Черданцева Анна. QAP-73.
 
 def babble_sort(array):
     for i in range(len(array)):
