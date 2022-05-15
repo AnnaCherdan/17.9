@@ -55,20 +55,20 @@ while True:
 print(f'Отсортированный числовой массив: {b_array}.')
 
 guest_num_in = binary_search(b_array, guest_num, 0, len(b_array))
-smoll_in = guest_num_in - 1
+small_in = guest_num_in - 1
 big_in = guest_num_in + 1
 
 print(f'Индекс вашего числа в массиве: {guest_num_in}.')
 
-if smoll_in in range(len(b_array)):
-    print(f'Индекс предыдущего меньшего числа: {smoll_in}.')
+if small_in in range(len(b_array)):
+    print(f'Индекс предыдущего меньшего числа: {small_in}.')
 else:
-    print(f'Индекс предыдущего меньшего числа: {smoll_in}, вне (меньше) диапазона.')
+    print(f'Индекс предыдущего меньшего числа: {small_in}, вне (меньше) диапазона.')
 
 if big_in in range(len(b_array)):
     print(f'Индекс следующего большего числа: {big_in}.')
 else:
-    print(f'Индекс предыдущего меньшего числа: {big_in}, вне (больше) диапазона.')
+    print(f'Индекс предыдущего большего числа: {big_in}, вне (больше) диапазона.')
 
 if b_array[guest_num_in] == b_array[big_in]:
     print('Ваше число равно следующему числу.')
